@@ -25,3 +25,8 @@ classes/
 .idea
 .idea_modules
 /.worksheet/
+
+# metals
+.metals/
+.bloop/
+project/metals.sbt

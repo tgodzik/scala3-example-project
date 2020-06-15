@@ -1,3 +1,16 @@
+# Sample Dotty Metals project for sbt
+
+To start the repository in Gitpod just use the below link:
+
+https://gitpod.io/#https://github.com/tgodzik/dotty-example-project
+
+It will start a new project with Metals already installed.
+
+Bloop console will be available in the terminal itself.
+
+Possible improvements to Metals:
+- do not show build import if the bloop files exist
+
 # Example sbt project that compiles using Dotty
 
 [![Build Status](https://travis-ci.org/lampepfl/dotty-example-project.svg?branch=master)](https://travis-ci.org/lampepfl/dotty-example-project)
