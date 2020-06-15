@@ -1,11 +1,13 @@
  #!/bin/bash
 
 METALS_DIR="$GITPOD_REPO_ROOT/.metals"
+APPS_DIR="$METALS_DIR/apps"
 METALS_VERSION="0.9.0"
+DOTTY_VERSION="0.24.0-RC1"
 
-mkdir -p $METALS_DIR
+mkdir -p $APPS_DIR
 
-export PATH=$PATH:/usr/local/openjdk-8/bin
+export PATH=$PATH:/usr/local/openjdk-8/bin:$APPS_DIR
 
 echo "-Dsbt.coursier.home=$METALS_DIR/coursier" >> .jvmopts
 echo "-Dcoursier.cache=$METALS_DIR/coursier" >> .jvmopts
@@ -13,15 +15,16 @@ echo "-sbt-dir $METALS_DIR/sbt" >> .sbtopts
 echo "-sbt-boot $METALS_DIR/sbt/boot" >> .sbtopts
 echo "-ivy $METALS_DIR/.ivy2" >> .sbtopts
 
-curl -Lo $METALS_DIR/cs https://git.io/coursier-cli-linux && chmod +x $METALS_DIR/cs
+curl -Lo $APPS_DIR/cs https://git.io/coursier-cli-linux && chmod +x $APPS_DIR/cs
 
-$METALS_DIR/cs launch org.scalameta:metals_2.12:$METALS_VERSION -- -J-Dcoursier.cache=./output -M scala.meta.metals.DownloadDependencies
+cs install --install-dir $APPS_DIR --only-prebuilt=true bloop
+cs install --install-dir $APPS_DIR sbt
 
-$METALS_DIR/cs install --install-dir $METALS_DIR --only-prebuilt=true bloop
-$METALS_DIR/cs install --install-dir $METALS_DIR sbt
-
-alias sbt=$METALS_DIR/sbt
-alias bloop=$METALS_DIR/bloop
+cs fetch org.scalameta:metals_2.12:$METALS_VERSION --cache=$METALS_DIR/coursier 
+cs fetch org.scalameta:mtags_$DOTTY_VERSION:$METALS_VERSION --cache=$METALS_DIR/coursier 
+cs fetch org.scalameta:scalafmt-cli_2.12:2.4.2 --cache=$METALS_DIR/coursier 
 
 sbt -Dbloop.export-jar-classifiers=sources bloopInstall
 bloop compile --cascade root
+
+echo "export PATH=\$PATH:/usr/local/openjdk-8/bin:$APPS_DIR" >> ~/.bashrc

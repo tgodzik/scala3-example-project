@@ -1,10 +1,9 @@
- #!/bin/bash
+#!/bin/bash
 
 METALS_DIR="$GITPOD_REPO_ROOT/.metals"
+APPS_DIR="$METALS_DIR/apps"
 
-export PATH=$PATH:/usr/local/openjdk-8/bin
+mkdir -p $APPS_DIR
 
-alias sbt=$METALS_DIR/sbt
-alias bloop=$METALS_DIR/bloop
-
+export PATH=$PATH:/usr/local/openjdk-8/bin:$APPS_DIR
 bloop about
