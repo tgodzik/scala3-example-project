@@ -29,4 +29,3 @@ classes/
 # metals
 .metals/
 .bloop/
-project/metals.sbt
