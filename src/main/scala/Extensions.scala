@@ -32,7 +32,7 @@ object Advanced:
   def foo[T: D](a: Int) = ???
 
   "".double(using b)[Int](using c)(1)
-  
+
 end Advanced
 
 object RightAssoc:
