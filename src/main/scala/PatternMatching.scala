@@ -1,4 +1,3 @@
-
 /**
   * Pattern Matching: https://dotty.epfl.ch/docs/reference/changed-features/pattern-matching.html
   */
@@ -34,7 +33,7 @@ object PatternMatching {
 
   object seqPattern {
 
-    // adapted from http://danielwestheide.com/blog/2012/11/28/the-neophytes-guide-to-scala-part-2-extracting-sequences.html
+    // adapted from https://danielwestheide.com/blog/the-neophytes-guide-to-scala-part-2-extracting-sequences/
     object Names {
       def unapplySeq(name: String): Option[Seq[String]] = {
         val names = name.trim.split(" ")
@@ -59,45 +58,43 @@ object PatternMatching {
   }
 
   def test: Unit = {
-
-    import booleanPattern._
+    import booleanPattern.*
 
     "even" match {
       case s @ Even() => println(s"$s has an even number of characters")
-      case s => println(s"$s has an odd number of characters")
+      case s          => println(s"$s has an odd number of characters")
     }
 
-    // http://dotty.epfl.ch/docs/reference/changed/vararg-patterns.html
+    // https://dotty.epfl.ch/docs/reference/changed-features/vararg-splices.html
     def containsConsecutive(list: List[Int]): Boolean = list match {
-      case List(a, b, xs: _ *) => if (a == b) true else containsConsecutive(b :: xs.toList)
-      case List(a, _ : _*) => false
-      case Nil => false
+      case List(a, b, xs*)   => if (a == b) true else containsConsecutive(b :: xs.toList)
+      case Nil | List(_, _*) => false
     }
 
     println(containsConsecutive(List(1, 2, 3, 4, 5)))
     println(containsConsecutive(List(1, 2, 3, 3, 5)))
 
-    import productPattern._
+    import productPattern.*
     ("john", 42) match {
       case Person(n, a) => println(s"name: $n, age: $a")
     }
 
-    import seqPattern._
+    import seqPattern.*
 
     def greet(fullName: String) = fullName match {
-      case Names(lastName, firstName, _: _*) => "Good morning, " + firstName + " " + lastName + "!"
-      case _ => "Welcome! Please make sure to fill in your name!"
+      case Names(lastName, firstName, _*) => "Good morning, " + firstName + " " + lastName + "!"
+      case _                                 => "Welcome! Please make sure to fill in your name!"
     }
 
     println(greet("Alan Turing"))
     println(greet("john"))
     println(greet("Wolfgang Amadeus Mozart"))
 
-    import namePattern._
+    import namePattern.*
     "alice" match {
       case Name(n) => println(s"name is $n")
-      case _ => println("empty name")
+      case _       => println("empty name")
     }
-
   }
+
 }

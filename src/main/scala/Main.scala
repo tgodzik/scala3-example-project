@@ -1,15 +1,20 @@
 
-object Main {
 
-  def main(args: Array[String]): Unit = {
 
+def runExample(name: String)(f: => Unit) =
+    println(Console.MAGENTA + s"$name example:" + Console.RESET)
+    f
+    println()
+
+@main
+def main(): Unit =
     runExample("Trait Params")(TraitParams.test)
-
+    
     runExample("Enum Types")(EnumTypes.test)
 
-    runExample("Context Queries")(ContextQueries.test)
+    runExample("Context Functions")(ContextFunctions.test)
 
-    runExample("Implied Instances")(ImpliedInstances.test)
+    runExample("Given Instances")(GivenInstances.test)
 
     runExample("Conversion")(Conversion.test)
 
@@ -20,21 +25,10 @@ object Main {
     runExample("Type Lambda")(TypeLambdas.test)
 
     runExample("Multiversal Equality")(MultiversalEquality.test)
-
-    runExample("Named Type Arguments")(NamedTypeArguments.test)
-
-    runExample("Auto Param Tupling")(AutoParamTupling.test)
+    runExample("Parameter Untupling")(ParameterUntupling.test)
 
     runExample("Structural Types")(StructuralTypes.test)
-
     runExample("Pattern Matching")(PatternMatching.test)
 
-  }
+    runExample("") {}
 
-  private def runExample(name: String)(f: => Unit) = {
-    println(Console.MAGENTA + s"$name example:" + Console.RESET)
-    f
-    println()
-  }
-
-}

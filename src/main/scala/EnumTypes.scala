@@ -1,5 +1,5 @@
 /**
-  * Enum Types: http://dotty.epfl.ch/docs/reference/enums/adts.html
+  * Enum Types: https://dotty.epfl.ch/docs/reference/enums/adts.html
   */
 object EnumTypes {
 
@@ -24,7 +24,6 @@ object EnumTypes {
   }
 
   def test: Unit = {
-
     val emptyList = ListEnum.Empty
     val list = ListEnum.Cons(1, ListEnum.Cons(2, ListEnum.Cons(3, ListEnum.Empty)))
     println(emptyList)

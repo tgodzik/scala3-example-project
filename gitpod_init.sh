@@ -2,8 +2,8 @@
 
 METALS_DIR="$GITPOD_REPO_ROOT/.metals"
 APPS_DIR="$METALS_DIR/apps"
-METALS_VERSION="0.9.0"
-DOTTY_VERSION="0.24.0-RC1"
+METALS_VERSION="0.10.9"
+DOTTY_VERSION="3.1.0"
 
 mkdir -p $APPS_DIR
 
@@ -22,7 +22,7 @@ cs install --install-dir $APPS_DIR sbt
 
 cs fetch org.scalameta:metals_2.12:$METALS_VERSION --cache=$METALS_DIR/coursier 
 cs fetch org.scalameta:mtags_$DOTTY_VERSION:$METALS_VERSION --cache=$METALS_DIR/coursier 
-cs fetch org.scalameta:scalafmt-cli_2.12:2.4.2 --cache=$METALS_DIR/coursier 
+cs fetch org.scalameta:scalafmt-cli_2.12:3.0.7 --cache=$METALS_DIR/coursier 
 
 sbt -Dbloop.export-jar-classifiers=sources bloopInstall
 bloop compile --cascade root

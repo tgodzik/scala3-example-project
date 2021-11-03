@@ -1,13 +1,13 @@
 lazy val root = project
   .in(file("."))
   .settings(
-    name := "dotty-example-project",
-    description := "Example sbt project that compiles using Dotty",
+    name := "scala3-example-project",
+    description := "Example sbt project that compiles using Scala 3",
     version := "0.1.0",
     scalacOptions ++= Seq(
-        "-Ysemanticdb",
+        "-Xsemanticdb",
         "-sourceroot",
         baseDirectory.in(ThisBuild).value.toString
     ),
-    scalaVersion := "0.24.0-RC1"
+    scalaVersion := "3.1.0"
   )
