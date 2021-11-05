@@ -1,3 +1,5 @@
+package example
+
 import scala.concurrent.ExecutionContext
 import scala.concurrent.Future
 import scala.util.Try

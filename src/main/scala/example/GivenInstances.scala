@@ -1,3 +1,5 @@
+package example
+
 import java.nio.file.Paths
 import scala.util.Success
 import scala.util.{given Int}

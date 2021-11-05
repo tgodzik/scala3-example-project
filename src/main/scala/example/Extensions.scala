@@ -1,3 +1,5 @@
+package example
+
 import scala.collection.GenMap as *
 
 class A

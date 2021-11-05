@@ -1,3 +1,5 @@
+package example
+
 def runExample(name: String)(f: => Unit) =
   println(Console.MAGENTA + s"$name example:" + Console.RESET)
   f

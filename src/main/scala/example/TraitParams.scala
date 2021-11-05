@@ -1,3 +1,5 @@
+package example
+
 /** Trait Parameters:
   * https://dotty.epfl.ch/docs/reference/other-new-features/trait-parameters.html
   */

@@ -1,3 +1,5 @@
+package example
+
 /** Parameter Untupling:
   * https://dotty.epfl.ch/docs/reference/other-new-features/parameter-untupling.html
   */

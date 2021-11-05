@@ -1,3 +1,5 @@
+package example
+
 import scala.language.strictEquality
 
 /** Multiversal Equality:
