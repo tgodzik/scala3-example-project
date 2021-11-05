@@ -1,34 +1,30 @@
-
-
-
 def runExample(name: String)(f: => Unit) =
-    println(Console.MAGENTA + s"$name example:" + Console.RESET)
-    f
-    println()
+  println(Console.MAGENTA + s"$name example:" + Console.RESET)
+  f
+  println()
 
 @main
 def main(): Unit =
-    runExample("Trait Params")(TraitParams.test)
-    
-    runExample("Enum Types")(EnumTypes.test)
+  runExample("Trait Params")(TraitParams.test)
 
-    runExample("Context Functions")(ContextFunctions.test)
+  runExample("Enum Types")(EnumTypes.test)
 
-    runExample("Given Instances")(GivenInstances.test)
+  runExample("Context Functions")(ContextFunctions.test)
 
-    runExample("Conversion")(Conversion.test)
+  runExample("Given Instances")(GivenInstances.test)
 
-    runExample("Union Types")(UnionTypes.test)
+  runExample("Conversion")(Conversion.test)
 
-    runExample("Intersection Types")(IntersectionTypes.test)
+  runExample("Union Types")(UnionTypes.test)
 
-    runExample("Type Lambda")(TypeLambdas.test)
+  runExample("Intersection Types")(IntersectionTypes.test)
 
-    runExample("Multiversal Equality")(MultiversalEquality.test)
-    runExample("Parameter Untupling")(ParameterUntupling.test)
+  runExample("Type Lambda")(TypeLambdas.test)
 
-    runExample("Structural Types")(StructuralTypes.test)
-    runExample("Pattern Matching")(PatternMatching.test)
+  runExample("Multiversal Equality")(MultiversalEquality.test)
+  runExample("Parameter Untupling")(ParameterUntupling.test)
 
-    runExample("") {}
+  runExample("Structural Types")(StructuralTypes.test)
+  runExample("Pattern Matching")(PatternMatching.test)
 
+  runExample("") {}

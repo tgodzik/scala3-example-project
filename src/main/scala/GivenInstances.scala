@@ -13,14 +13,14 @@ object GivenInstances:
 
   sealed trait StringParser[A]:
     def parse(s: String): Try[A]
-
+  private def baseParser[A](f: String ⇒ Try[A]): StringParser[A] =
+    new StringParser[A]:
+      override def parse(s: String): Try[A] = f(s)
   object StringParser:
 
     def apply[A](using parser: StringParser[A]): StringParser[A] = parser
 
-    private def baseParser[A](f: String ⇒ Try[A]): StringParser[A] =
-      new StringParser[A]:
-        override def parse(s: String): Try[A] = f(s)
+
 
     given stringParser: StringParser[String] = baseParser(Success(_))
     given intParser: StringParser[Int] = baseParser(s ⇒ Try(s.toInt))
